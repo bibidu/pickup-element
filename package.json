@@ -1,0 +1,49 @@
+{
+  "name": "@bib1du/pick-element",
+  "version": "1.0.0",
+  "description": "pickup element",
+  "main": "dist/pick-element.js",
+  "unpkg": "dist/pick-element.umd.js",
+  "module": "dist/pick-element.js",
+  "exports": {
+    ".": {
+      "import": "./dist/pick-element.js",
+      "require": "./dist/pick-element.umd.js"
+    },
+    "./jsx-runtime": {
+      "main": "./dist/pick-element.js"
+    }
+  },
+  "scripts": {
+    "dev": "rollup -c --watch",
+    "build": "rollup -c && gzip-size dist/pick-element.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bibidu/pickup-element.git"
+  },
+  "keywords": [
+    "pick element",
+    "element"
+  ],
+  "typings": "./dist/types/index.d.ts",
+  "files": [
+    "src/**/*",
+    "dist/*.js",
+    "dist/*.map",
+    "dist/types"
+  ],
+  "author": "bibidu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bibidu/pickup-element/issues"
+  },
+  "homepage": "https://github.com/bibidu/pickup-element#readme",
+  "devDependencies": {
+    "gzip-size-cli": "^4.0.0",
+    "rollup": "^2.36.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.1.3"
+  }
+}
