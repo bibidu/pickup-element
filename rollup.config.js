@@ -1,5 +1,6 @@
 import { terser } from 'rollup-plugin-terser'
 import typescript from 'rollup-plugin-typescript2'
+import resolve from 'rollup-plugin-node-resolve'
 
 const plugins = [
   typescript({
@@ -7,7 +8,8 @@ const plugins = [
     removeComments: true,
     useTsconfigDeclarationDir: true,
   }),
-  // terser(),
+  resolve(),
+  terser(),
 ]
 
 export default {

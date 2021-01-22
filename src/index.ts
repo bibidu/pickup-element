@@ -1,4 +1,5 @@
 import { IElementPosition, IPressEvent, ILayerWrapperStyle } from './type'
+import isMobile from 'ismobilejs'
 
 const defaultWrapperStyle: ILayerWrapperStyle = {
   position: 'fixed',
@@ -20,9 +21,9 @@ export default class Layer{
 
   // props
   selector: string
-  selectedStyle: string
-  layerWrapperStyle: ILayerWrapperStyle
-  onSelectElement: (el: Element[]) => void
+  selectedStyle?: string
+  layerWrapperStyle?: ILayerWrapperStyle
+  onSelectElement?: (el: Element[]) => void
 
   constructor({
     selector = 'body',
@@ -39,10 +40,7 @@ export default class Layer{
   }
 
   _isMobile = () => {
-    const height = document.documentElement.clientHeight
-    const width = document.documentElement.clientWidth
-
-    return height > width
+    return isMobile(navigator.userAgent)
   }
 
   _getPressEventName = (): IPressEvent => {
@@ -176,8 +174,8 @@ export default class Layer{
       context.stroke()
     }
     if (element) {
-      element.setAttribute('data-sborder', getComputedStyle(element).border)
-      element.style.border = this.selectedStyle
+      element.setAttribute('data-soutline', getComputedStyle(element).outline)
+      element.style.outline = this.selectedStyle
     }
   }
 
@@ -193,8 +191,8 @@ export default class Layer{
   _clearLastDrawRect = () => {
     const el = this._temporaryElement
     if (el) {
-      el.style.border = el.getAttribute('data-sborder')
-      el.removeAttribute('data-sborder')
+      el.style.outline = el.getAttribute('data-soutline')
+      el.removeAttribute('data-soutline')
       this._temporaryElement = null
     }
   }
