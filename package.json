@@ -1,6 +1,6 @@
 {
   "name": "@bib1du/pick-element",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "pickup element",
   "main": "dist/pick-element.js",
   "unpkg": "dist/pick-element.umd.js",

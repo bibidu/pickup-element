@@ -1,4 +1,4 @@
-import { IElementPosition, IPressEvent, ILayerWrapperStyle } from './type'
+import { IElementPosition, IPressEvent, ILayerWrapperStyle, ILayerConstructorProps } from './type'
 import isMobile from 'ismobilejs'
 
 const defaultWrapperStyle: ILayerWrapperStyle = {
@@ -21,16 +21,16 @@ export default class Layer{
 
   // props
   selector: string
-  selectedStyle?: string
-  layerWrapperStyle?: ILayerWrapperStyle
-  onSelectElement?: (el: Element[]) => void
+  selectedStyle: string
+  layerWrapperStyle: ILayerWrapperStyle
+  onSelectElement: (el: Element[]) => void
 
   constructor({
     selector = 'body',
     selectedStyle = '2px solid orange',
     layerWrapperStyle = defaultWrapperStyle,
     onSelectElement,
-  }) {
+  }: ILayerConstructorProps) {
     this.selector = selector
     this.el = this._safeQuerySelector(this.selector)
 
@@ -40,7 +40,7 @@ export default class Layer{
   }
 
   _isMobile = () => {
-    return isMobile(navigator.userAgent)
+    return isMobile(navigator.userAgent).any
   }
 
   _getPressEventName = (): IPressEvent => {

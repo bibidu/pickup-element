@@ -18,3 +18,10 @@ export interface ILayerWrapperStyle {
   right: string;
   zIndex: number;
 }
+
+export interface ILayerConstructorProps {
+  selector?: string;
+  selectedStyle?: string;
+  layerWrapperStyle?: ILayerWrapperStyle;
+  onSelectElement?: (el: Element[]) => void;
+}
